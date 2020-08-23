@@ -1,13 +1,10 @@
 package com.H2O.backend.board;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +18,6 @@ interface BoardService {
     Optional<Board> findBoardNo(Long boardNo);
     void modify(Board boardNo);
     void click(Long boardNo);
-//    List<Board> getBoardPage(int pageNumber);
     List<Board> getAllBoardList();
 
     List<Board> findByCategory(String category);
@@ -83,33 +79,6 @@ interface BoardService {
             }
             return boardRepository.findByCategory(category);
         }
-
-
-//        @Override
-//        public List<Board> getBoardPage(int pageNumber) {
-//                Board result = new Board();
-//                List<RequestedBoardsVO> boards = new ArrayList<>();
-//                Page<Board> pageBoardList = boardRepository.findAll(PageRequest.of(pageNumber, 20));
-//
-//                pageBoardList.forEach(board -> {
-//                    RequestedBoardsVO newBoards= new RequestedBoardsVO();
-//                    newBaord.setBoardNo(board.getBoardNo());
-//                    newBaord.setTitle(board.getTitle());
-//                    newBaord.setCreationDate(board.getCreationDate());
-//                    newBaord.setCategory(board.getCategory());
-//                    newBaord.setMedCategory(board.getMedCategory());
-//                    newBaord.setClick(board.getClick());
-//                    boards.add(newBoards);
-//                });
-//
-//
-//                result.setTotalBoards(pageBoardList.getTotalElements());
-//                result.setTotalPages(pageBoardList.getTotalPages());
-//                result.setBoards(boards);
-//                return result;
-//            }
-
-
 
         @Override
         public Board findTitle(String title) {

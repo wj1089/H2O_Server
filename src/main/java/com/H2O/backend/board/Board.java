@@ -7,7 +7,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Getter
@@ -39,9 +38,6 @@ public class Board {
     @JoinColumn(name = "hospital_no")
     private Hospital hospital;
 
-/*  @JsonManagedReference
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
-    private List<Comment> comment;*/
 
     @Builder
     public Board(String title, String content,String medCategory,

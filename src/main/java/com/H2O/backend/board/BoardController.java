@@ -28,31 +28,14 @@ public class BoardController {
     public ResponseEntity<List<Board>> getAllBoardList(@RequestBody Board board){
         Board Bdata = new Board();
         Bdata.setTitle(board.getTitle());
-//        System.out.println(board.getTitle());
-
         Bdata.setContent(board.getContent());
-//        System.out.println(board.getContent());
-
         Bdata.setCreationDate(board.getCreationDate());
-//        System.out.println(board.getCreationDate());
-
         Bdata.setMedCategory(board.getMedCategory());
-//        System.out.println(board.getMedCategory());
-
         Bdata.setCustomerCategory(board.getCustomerCategory());
-//        System.out.println(board.getMedCategory());
-
         Bdata.setQuestionCategory(board.getQuestionCategory());
-//        System.out.println(board.getMedCategory());
-
         Bdata.setCategory(board.getCategory());
-//        System.out.println(board.getCategory());
-
         Bdata.setClick(board.getClick());
-        System.out.println(board.getClick());
-
         Bdata.setCreationDate(LocalDate.now());
-//        System.out.println(board.getCreationDate());
 
         boardRepository.save(Bdata);
         List<Board> boardList = boardService.findAll();
@@ -66,12 +49,6 @@ public class BoardController {
         System.out.println(boardList.toString());
         return ResponseEntity.ok(boardList);
     }
-
-//    @GetMapping("/list/{pageNumber}")
-//    public ResponseEntity<List<Board>> getAllBoardListPage(@PathVariable int pageNumber){
-//        List<Board> boardList = boardService.getBoardPage(pageNumber);
-//        return ResponseEntity.ok(boardList);
-//    }
 
     @GetMapping("/list/medCategory/{BoarNo}")
     public Board getFindTitle(@PathVariable String BoarNo){

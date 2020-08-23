@@ -32,7 +32,6 @@ CREATE TABLE Reservation
 CREATE TABLE Board
 (
     `Board_No`       INT             NOT NULL    AUTO_INCREMENT,
-    `Hospital_Star`  VARCHAR(10)     NULL,
     `Title`          VARCHAR(100)     NULL,
     `Content`        VARCHAR(300)    NULL,
     `Creation_Date`  DATE     NULL,

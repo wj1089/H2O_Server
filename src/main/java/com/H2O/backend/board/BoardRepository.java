@@ -9,7 +9,7 @@ interface BoardRepository extends JpaRepository<Board, Long>, IBoardRepository {
 
 public List<Board> findAllByMedCategory(String medCategory);
 
-public Board findAllByTitle(String title);
+//public Board findAllByTitle(String title);
 
 public List<Board> findByCategory(String category);
 

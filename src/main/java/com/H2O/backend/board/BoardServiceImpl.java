@@ -10,17 +10,17 @@ import java.util.Optional;
 
 @Component
 interface BoardService {
-    List<Board> findAll();
+    void click(Long boardNo);
     void delete(Board board);
-    Board update(Board selectBoard);
-    Board findTitle(String title);
+    List<Board> findAll();
+    List<Board> findByCategory(String category);
     List<Board> findOneBoard(String medCategory);
     Optional<Board> findBoardNo(Long boardNo);
-    void modify(Board boardNo);
-    void click(Long boardNo);
-    List<Board> getAllBoardList();
 
-    List<Board> findByCategory(String category);
+//    void modify(Board boardNo);
+//    List<Board> getAllBoardList();
+//    Board update(Board selectBoard);
+//    Board findTitle(String title);
 }
     @Service
     public class BoardServiceImpl implements BoardService {
@@ -35,10 +35,10 @@ interface BoardService {
             return boardRepository.findAll();
         }
 
-        @Override
-        public Board update(Board selectBoard) {
-            return boardRepository.save(selectBoard);
-        }
+//        @Override
+//        public Board update(Board selectBoard) {
+//            return boardRepository.save(selectBoard);
+//        }
 
         @Override
         public void delete(Board board) {
@@ -55,18 +55,18 @@ interface BoardService {
         }
 
 
-        @Override  @Modifying @Transactional
-        public void modify(Board boardNo) { boardRepository.modify(boardNo); }
+//        @Override  @Modifying @Transactional
+//        public void modify(Board boardNo) { boardRepository.modify(boardNo); }
 
         @Override @Modifying @Transactional
         public void click(Long boardNo) {
             boardRepository.findOneByClick(boardNo);
         }
 
-        @Override
-        public List<Board> getAllBoardList() {
-            return boardRepository.findAll(); //페이지네이션
-            }
+//        @Override
+//        public List<Board> getAllBoardList() {
+//            return boardRepository.findAll(); //페이지네이션
+//            }
 
         @Override
         public List<Board> findByCategory(String category) {
@@ -80,10 +80,10 @@ interface BoardService {
             return boardRepository.findByCategory(category);
         }
 
-        @Override
-        public Board findTitle(String title) {
-            return boardRepository.findAllByTitle(title);
-        }
+//        @Override
+//        public Board findTitle(String title) {
+//            return boardRepository.findAllByTitle(title);
+//        }
     }
 
 

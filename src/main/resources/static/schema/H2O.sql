@@ -10,7 +10,10 @@ CREATE TABLE Ambulance
 (
     `Ambulance_No`    INT            NOT NULL    AUTO_INCREMENT,
     `Ambulance_Name`  VARCHAR(50)    NOT NULL,
-    `Addr`            VARCHAR(45)    NULL,
+    `Addr`            VARCHAR(100)    NULL,
+    `Starting_Addr`   VARCHAR(100)    NULL,
+    `Ending_Addr`     VARCHAR(100)    NULL,
+    `Postcode`        VARCHAR(30)    NULL,
     `Tel`             VARCHAR(45)    NULL,
     `HomePage`        VARCHAR(45)    NULL,
     `Count`           VARCHAR(45)    NULL,

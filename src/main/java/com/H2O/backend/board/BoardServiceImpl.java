@@ -10,14 +10,16 @@ import java.util.Optional;
 
 @Component
 interface BoardService {
+
+    void modify(Board boardNo);
     void click(Long boardNo);
     void delete(Board board);
+
     List<Board> findAll();
     List<Board> findByCategory(String category);
     List<Board> findOneBoard(String medCategory);
     Optional<Board> findBoardNo(Long boardNo);
 
-//    void modify(Board boardNo);
 //    List<Board> getAllBoardList();
 //    Board update(Board selectBoard);
 //    Board findTitle(String title);
@@ -30,19 +32,23 @@ interface BoardService {
             this.boardRepository = boardRepository;
         }
 
-        @Override
-        public List<Board> findAll() {
-            return boardRepository.findAll();
-        }
 
-//        @Override
-//        public Board update(Board selectBoard) {
-//            return boardRepository.save(selectBoard);
-//        }
+        @Override  @Modifying @Transactional
+        public void modify(Board boardNo) { boardRepository.modify(boardNo); }
+
+        @Override @Modifying @Transactional
+        public void click(Long boardNo) {
+            boardRepository.findOneByClick(boardNo);
+        }
 
         @Override
         public void delete(Board board) {
             boardRepository.delete(board);
+        }
+
+        @Override
+        public List<Board> findAll() {
+            return boardRepository.findAll();
         }
 
         @Override
@@ -51,22 +57,9 @@ interface BoardService {
         }
 
         public Optional<Board> findBoardNo(Long boardNo) {
+
             return boardRepository.findById(boardNo);
         }
-
-
-//        @Override  @Modifying @Transactional
-//        public void modify(Board boardNo) { boardRepository.modify(boardNo); }
-
-        @Override @Modifying @Transactional
-        public void click(Long boardNo) {
-            boardRepository.findOneByClick(boardNo);
-        }
-
-//        @Override
-//        public List<Board> getAllBoardList() {
-//            return boardRepository.findAll(); //페이지네이션
-//            }
 
         @Override
         public List<Board> findByCategory(String category) {
@@ -84,6 +77,17 @@ interface BoardService {
 //        public Board findTitle(String title) {
 //            return boardRepository.findAllByTitle(title);
 //        }
+
+//        @Override
+//       public Board update(Board selectBoard) {
+//            return boardRepository.save(selectBoard);
+//        }
+
+//        @Override
+//        public List<Board> getAllBoardList() {
+//            return boardRepository.findAll(); //페이지네이션
+//            }
+
     }
 
 

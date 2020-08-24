@@ -28,9 +28,15 @@ public class QAmbulance extends EntityPathBase<Ambulance> {
 
     public final NumberPath<Integer> count = createNumber("count", Integer.class);
 
+    public final StringPath ending_addr = createString("ending_addr");
+
     public final StringPath homePage = createString("homePage");
 
+    public final StringPath postcode = createString("postcode");
+
     public final ListPath<com.H2O.backend.reservation.Reservation, com.H2O.backend.reservation.QReservation> reservations = this.<com.H2O.backend.reservation.Reservation, com.H2O.backend.reservation.QReservation>createList("reservations", com.H2O.backend.reservation.Reservation.class, com.H2O.backend.reservation.QReservation.class, PathInits.DIRECT2);
+
+    public final StringPath starting_addr = createString("starting_addr");
 
     public final StringPath tel = createString("tel");
 
